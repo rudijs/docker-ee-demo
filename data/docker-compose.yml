@@ -3,7 +3,7 @@ services:
 
   web:
     # image: demo-app:1.0.0
-    image: 192.168.88.10:5000/demo-app:1.0.0
+    image: 192.168.88.10:5000/docker-demo-web-app:latest
     deploy:
       replicas: 2
       update_config:
