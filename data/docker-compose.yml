@@ -1,0 +1,33 @@
+version: "3"
+services:
+
+  web:
+    # image: demo-app:1.0.0
+    image: 192.168.88.10:5000/demo-app:1.0.0
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 1s
+        failure_action: pause
+        monitor: 0s
+        # Docker ee 17.09 coming soon...
+        # order: start-first
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 200M
+      restart_policy:
+        condition: on-failure
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "--output", "/dev/null", "http://localhost:3000"]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+    ports:
+      - "3000:3000"
+    networks:
+      - webnet
+
+networks:
+  webnet:

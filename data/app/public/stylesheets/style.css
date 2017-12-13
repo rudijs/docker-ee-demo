@@ -1,0 +1,12 @@
+html {
+  background-color: lemonchiffon;
+  /* background-color: aliceblue; */
+}
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}

@@ -1,0 +1,23 @@
+version: "3"
+services:
+
+  web:
+    image: 192.168.88.10:5000/docker-demo-pccw-global:latest
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 5s
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 200M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "3000:3000"
+    networks:
+      - webnet
+
+networks:
+  webnet:
